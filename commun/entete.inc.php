@@ -2,15 +2,19 @@
 // Gérer le choix de langue
 // Étape 1 : par défaut la langue est le français (fr)
 $langue = 'fr';
-
 // Étape 2 : si l'utilisateur a déjà choisi la langue par le passé, alors utiliser ce choix (qui aurait été retenu dans un témoin HTTP - cookie) pour remplacer la valeur de la variable $langue
-
+// if(il y a un cookie nommé teetimGr2LangueChoisie) {
+//     $langue = valeurDeCeCookie;
+// }
+if (isset($_COOKIE['teetimGr2LangueChoisie'])) {
+    $langue = $_COOKIE['teetimGr2LangueChoisie'];
+}
 // Étape 3 : si l'utilisateur choisi explicitement une langue, alors on change la valeur de la variable $langue pour refléter ce choix
 //print_r($_GET);
 if (isset($_GET['lan'])) {
     $langue = $_GET['lan'];
     // Garder ce choix en mémoire dans un cookie !!!!!!
-
+    setcookie("teetimGr2LangueChoisie", $langue, time() + 365 * 24 * 60 * 60); // Expire lorsque l'onglet ou le browser est fermé
 }
 
 
@@ -33,7 +37,7 @@ $_pp = $textes->pp;
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="" dir="">
 
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,8 +56,21 @@ $_pp = $textes->pp;
     <div class="conteneur">
         <header>
             <nav class="barre-haut">
-                <a class="" href="?lan=fr">fr</a>
-                <a class="" href="?lan=en">en</a>
+                <a class="<?php if ($langue === 'fr') {
+                                echo 'actif';
+                            } else {
+                                echo '';
+                            } ?>" href="?lan=fr">fr</a>
+                <a class="<?php if ($langue === 'en') {
+                                echo 'actif';
+                            } else {
+                                echo '';
+                            } ?>" href="?lan=en">en</a>
+                <a class="<?php if ($langue === 'ar') {
+                                echo 'actif';
+                            } else {
+                                echo '';
+                            } ?>" href="?lan=ar">ar</a>
             </nav>
             <nav class="barre-logo">
                 <label for="cc-btn-responsive" class="material-icons burger">menu</label>
