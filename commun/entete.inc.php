@@ -6,6 +6,12 @@ $langue = 'fr';
 // Étape 2 : si l'utilisateur a déjà choisi la langue par le passé, alors utiliser ce choix (qui aurait été retenu dans un témoin HTTP - cookie) pour remplacer la valeur de la variable $langue
 
 // Étape 3 : si l'utilisateur choisi explicitement une langue, alors on change la valeur de la variable $langue pour refléter ce choix
+//print_r($_GET);
+if (isset($_GET['lan'])) {
+    $langue = $_GET['lan'];
+    // Garder ce choix en mémoire dans un cookie !!!!!!
+
+}
 
 
 // Étape A : Lire le fichier JSON contenant les textes en français
@@ -46,8 +52,8 @@ $_pp = $textes->pp;
     <div class="conteneur">
         <header>
             <nav class="barre-haut">
-                <a class="" href="index.php?lan=fr">fr</a>
-                <a class="" href="index.php?lan=en">en</a>
+                <a class="" href="?lan=fr">fr</a>
+                <a class="" href="?lan=en">en</a>
             </nav>
             <nav class="barre-logo">
                 <label for="cc-btn-responsive" class="material-icons burger">menu</label>
