@@ -1,11 +1,29 @@
 <?php
-// Étape A : Lire le fichier JSON contenant les textes en français
-$textesJson = file_get_contents('i18n/textes-fr.json');
-// echo $textesJson;
+// Gérer le choix de langue
+// Étape 1 : par défaut la langue est le français (fr)
+$langue = 'fr';
 
-// Étape B : Convertir le JSON en structure de données PHP
+// Étape 2 : si l'utilisateur a déjà choisi la langue par le passé, alors utiliser ce choix (qui aurait été retenu dans un témoin HTTP - cookie) pour remplacer la valeur de la variable $langue
+
+// Étape 3 : si l'utilisateur choisi explicitement une langue, alors on change la valeur de la variable $langue pour refléter ce choix
+
+
+// Étape A : Lire le fichier JSON contenant les textes en français
+// $textesJson = file_get_contents('i18n/textes-' . $langue . '.json'); // Concaténation
+$textesJson = file_get_contents("i18n/textes-$langue.json"); // Interpolation
+
+// Étape B : Convertir le string JSON en structure de données PHP
 $textes = json_decode($textesJson);
-// print_r($textes);
+
+// Étape C : Créer quelques raccourcis utiles
+// i) Raccourci universel pour toutes les pages
+$_ = $textes->$page;
+
+// ii) Raccourci pour l'entete
+$_ent = $textes->entete;
+
+// iii) Raccourci pour le PP
+$_pp = $textes->pp;
 ?>
 
 <!DOCTYPE html>
@@ -28,9 +46,8 @@ $textes = json_decode($textesJson);
     <div class="conteneur">
         <header>
             <nav class="barre-haut">
-                <a class="actif" href="#">fr</a>
-                <a href="#">en</a>
-                <a href="#">es</a>
+                <a class="" href="index.php?lan=fr">fr</a>
+                <a class="" href="index.php?lan=en">en</a>
             </nav>
             <nav class="barre-logo">
                 <label for="cc-btn-responsive" class="material-icons burger">menu</label>
@@ -41,11 +58,11 @@ $textes = json_decode($textesJson);
             <input type="checkbox" id="cc-btn-responsive">
             <nav class="principale">
                 <label for="cc-btn-responsive" class="menu-controle material-icons">close</label>
-                <a href="teeshirts.php"></a>
-                <a href="casquettes.php"></a>
-                <a href="hoodies.php"></a>
+                <a href="teeshirts.php"><?= $_ent->menuPrincipalTeeshirts; ?></a>
+                <a href="casquettes.php"><?= $_ent->menuPrincipalCasquettes; ?></a>
+                <a href="hoodies.php"><?= $_ent->menuPrincipalHoodies; ?></a>
                 <span class="separateur"></span>
-                <a href="aide.php"></a>
-                <a href="apropos.php"></a>
+                <a href="aide.php"><?= $_ent->menuPrincipalAide; ?></a>
+                <a href="apropos.php"><?= $_ent->menuPrincipalNous; ?></a>
             </nav>
         </header>

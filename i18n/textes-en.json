@@ -1,0 +1,48 @@
+{
+    "__commentaires__": "This file contains the static labels for the TEETIM website",
+    "entete": {
+        "meta": {
+            "title": "teeTIM // natural fiber ... artificial design",
+            "desc": "TEETIM is a clothing designer based 100% in Quebec, designed by TIM students with the help of designs produced by artificial intelligence, and made with 100% natural and organic fibers."
+        },
+        "logoAlt": "Home",
+        "recherchePlaceholder": "Search",
+        "menuPrincipalTeeshirts": "T-shirts",
+        "menuPrincipalCasquettes": "Caps",
+        "menuPrincipalHoodies": "Hoodies",
+        "menuPrincipalAide": "Help",
+        "menuPrincipalNous": "About us"
+    },
+    "pp": {
+        "menuSecondaire": {
+            "achatsH3": "Your purchases",
+            "navFAQ": "Frequently asked questions",
+            "navLivraison": "Delivery of your package",
+            "navConditions": "Terms of sale",
+            "navConfidentialite": "Privacy policy",
+            "aproposH3": "About teeTIM",
+            "navCompagnie": "The company",
+            "navEquipe": "The team",
+            "navEmploi": "Jobs",
+            "joindreH3": "Contact us",
+            "contactTel": "Toll-free: ",
+            "contactCourriel": "Email: "
+        },
+        "droits": "All rights reserved, teeTIM"
+    },
+    "accueil": {
+        "amorceH1": "T-shirts, hoodies, and caps made in Quebec 💯",
+        "amorceH2": "Designed at TIM with ❤️",
+        "amorceH4": "/** with a little help from DALL-E 😉 **/",
+        "para1": "Today, the T-shirt is an essential piece of clothing in everyone's wardrobe. And in an era when environmental concerns matter more than ever, we prefer T-shirts made in Quebec to reduce our environmental impact and highlight local craftsmanship.",
+        "para2": "V-neck, crew-neck, loose or fitted, short-sleeved or long-sleeved for those who feel the cold, plain or patterned to add style to an outfit... The T-shirt is available in a variety of colors, styles, and patterns."
+    },
+    "teeshirts": {
+        "h1": "Our T-shirts",
+        "enConstruction": "Coming soon..."
+    },
+    "casquettes": {
+        "h1": "Our caps",
+        "enConstruction": "Coming soon..."
+    }
+}
