@@ -79,21 +79,13 @@ $_pp = $textes->pp;
     <div class="conteneur">
         <header>
             <nav class="barre-haut">
-                <a class="<?php if ($langue === 'fr') {
-                                echo 'actif';
-                            } else {
-                                echo '';
-                            } ?>" href="?lan=fr">fr</a>
-                <a class="<?php if ($langue === 'en') {
-                                echo 'actif';
-                            } else {
-                                echo '';
-                            } ?>" href="?lan=en">en</a>
-                <a class="<?php if ($langue === 'ar') {
-                                echo 'actif';
-                            } else {
-                                echo '';
-                            } ?>" href="?lan=ar">ar</a>
+                <!-- Générer dynamiquement les "boutons" de choix de langue -->
+                <!-- Répéter un A pour chaque langue disponible -->
+                <?php for ($i = 0; $i < count($languesDispo); $i++) { ?>
+                    <a class="<?= ($langue === $languesDispo[$i]) ? 'actif' : ''; ?>" href="?lan=<?= $languesDispo[$i]; ?>">
+                        <?= $languesDispo[$i]; ?>
+                    </a>
+                <?php } ?>
             </nav>
             <nav class="barre-logo">
                 <label for="cc-btn-responsive" class="material-icons burger">menu</label>
@@ -104,8 +96,8 @@ $_pp = $textes->pp;
             <input type="checkbox" id="cc-btn-responsive">
             <nav class="principale">
                 <label for="cc-btn-responsive" class="menu-controle material-icons">close</label>
-                <a href="teeshirts.php"><?= $_ent->menuPrincipalTeeshirts; ?></a>
-                <a href="casquettes.php"><?= $_ent->menuPrincipalCasquettes; ?></a>
+                <a class="<?= ($page === 'teeshirts') ? 'actif' : ''; ?>" href="teeshirts.php"><?= $_ent->menuPrincipalTeeshirts; ?></a>
+                <a class="<?= ($page === 'casquettes') ? 'actif' : ''; ?>" href="casquettes.php"><?= $_ent->menuPrincipalCasquettes; ?></a>
                 <a href="hoodies.php"><?= $_ent->menuPrincipalHoodies; ?></a>
                 <span class="separateur"></span>
                 <a href="aide.php"><?= $_ent->menuPrincipalAide; ?></a>
