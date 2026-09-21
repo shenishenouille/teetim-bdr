@@ -40,6 +40,10 @@ if (isset($_GET['lan']) && in_array($_GET['lan'], $languesDispo)) {
     setcookie("teetimGr2LangueChoisie", $langue, time() + 365 * 24 * 60 * 60); // Expire lorsque l'onglet ou le browser est fermé
 }
 
+// Direction de l'écriture
+$directionEcriture = in_array($langue, ['ar', 'he', 'fa', 'ur', 'ps', 'dv', 'ku', 'sd', 'ug'])
+    ? 'rtl' : 'ltr';
+
 
 // Étape A : Lire le fichier JSON contenant les textes en français
 // $textesJson = file_get_contents('i18n/textes-' . $langue . '.json'); // Concaténation
@@ -60,7 +64,7 @@ $_pp = $textes->pp;
 ?>
 
 <!DOCTYPE html>
-<html lang="" dir="">
+<html lang="<?= $langue; ?>" dir="<?= $directionEcriture; ?>">
 
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,7 +86,9 @@ $_pp = $textes->pp;
                 <!-- Générer dynamiquement les "boutons" de choix de langue -->
                 <!-- Répéter un A pour chaque langue disponible -->
                 <?php for ($i = 0; $i < count($languesDispo); $i++) { ?>
-                    <a class="<?= ($langue === $languesDispo[$i]) ? 'actif' : ''; ?>" href="?lan=<?= $languesDispo[$i]; ?>">
+                    <a
+                        class="<?= ($langue === $languesDispo[$i]) ? 'actif' : ''; ?>"
+                        href="?lan=<?= $languesDispo[$i]; ?>">
                         <?= $languesDispo[$i]; ?>
                     </a>
                 <?php } ?>

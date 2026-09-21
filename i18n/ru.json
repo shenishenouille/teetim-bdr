@@ -1,48 +1,48 @@
 {
-    "__commentaires__": "This file contains the static labels for the TEETIM website",
+    "__commentaires__": "Этот файл содержит статические метки для веб-сайта TEETIM",
     "entete": {
         "meta": {
-            "title": "teeTIM // natural fiber ... artificial design",
-            "desc": "TEETIM is a clothing designer based 100% in Quebec, designed by TIM students with the help of designs produced by artificial intelligence, and made with 100% natural and organic fibers."
+            "title": "teeTIM // натуральное волокно ... искусственный дизайн",
+            "desc": "TEETIM — это бренд одежды, на 100% созданный в Квебеке. Модели разработаны студентами TIM с помощью дизайнов, созданных искусственным интеллектом, и изготовлены из 100% натуральных и органических волокон."
         },
-        "logoAlt": "Home",
-        "recherchePlaceholder": "Search",
-        "menuPrincipalTeeshirts": "T-shirts",
-        "menuPrincipalCasquettes": "Caps",
-        "menuPrincipalHoodies": "Hoodies",
-        "menuPrincipalAide": "Help",
-        "menuPrincipalNous": "About us"
+        "logoAlt": "Главная",
+        "recherchePlaceholder": "Поиск",
+        "menuPrincipalTeeshirts": "Футболки",
+        "menuPrincipalCasquettes": "Кепки",
+        "menuPrincipalHoodies": "Худи",
+        "menuPrincipalAide": "Помощь",
+        "menuPrincipalNous": "О нас"
     },
     "pp": {
         "menuSecondaire": {
-            "achatsH3": "Your purchases",
-            "navFAQ": "Frequently asked questions",
-            "navLivraison": "Delivery of your package",
-            "navConditions": "Terms of sale",
-            "navConfidentialite": "Privacy policy",
-            "aproposH3": "About teeTIM",
-            "navCompagnie": "The company",
-            "navEquipe": "The team",
-            "navEmploi": "Jobs",
-            "joindreH3": "Contact us",
-            "contactTel": "Toll-free: ",
-            "contactCourriel": "Email: "
+            "achatsH3": "Ваши покупки",
+            "navFAQ": "Часто задаваемые вопросы",
+            "navLivraison": "Доставка вашей посылки",
+            "navConditions": "Условия продажи",
+            "navConfidentialite": "Политика конфиденциальности",
+            "aproposH3": "О компании teeTIM",
+            "navCompagnie": "Компания",
+            "navEquipe": "Команда",
+            "navEmploi": "Вакансии",
+            "joindreH3": "Связаться с нами",
+            "contactTel": "Бесплатный звонок: ",
+            "contactCourriel": "Эл. почта: "
         },
-        "droits": "All rights reserved, teeTIM"
+        "droits": "Все права защищены, teeTIM"
     },
     "accueil": {
-        "amorceH1": "T-shirts, hoodies, and caps made in Quebec 💯",
-        "amorceH2": "Designed at TIM with ❤️",
-        "amorceH4": "/** with a little help from DALL-E 😉 **/",
-        "para1": "Today, the T-shirt is an essential piece of clothing in everyone's wardrobe. And in an era when environmental concerns matter more than ever, we prefer T-shirts made in Quebec to reduce our environmental impact and highlight local craftsmanship.",
-        "para2": "V-neck, crew-neck, loose or fitted, short-sleeved or long-sleeved for those who feel the cold, plain or patterned to add style to an outfit... The T-shirt is available in a variety of colors, styles, and patterns."
+        "amorceH1": "Футболки, худи и кепки, сделанные в Квебеке 💯",
+        "amorceH2": "Разработано в TIM с ❤️",
+        "amorceH4": "/** с небольшой помощью от DALL-E 😉 **/",
+        "para1": "Сегодня футболка является неотъемлемой частью гардероба каждого человека. И в эпоху, когда экологические вопросы важны как никогда, мы отдаем предпочтение футболкам, сделанным в Квебеке, чтобы снизить воздействие на окружающую среду и поддержать местное ремесло.",
+        "para2": "С V-образным или круглым вырезом, свободные или приталенные, с коротким рукавом или длинным для тех, кто мерзнет, однотонные или с принтом для создания стильного образа... Футболки доступны в самых разных цветах, стилях и фасонах."
     },
     "teeshirts": {
-        "h1": "Our T-shirts",
-        "enConstruction": "Coming soon..."
+        "h1": "Наши футболки",
+        "enConstruction": "Скоро в продаже..."
     },
     "casquettes": {
-        "h1": "Our caps",
-        "enConstruction": "Coming soon..."
+        "h1": "Наши кепки",
+        "enConstruction": "Скоро в продаже..."
     }
 }
