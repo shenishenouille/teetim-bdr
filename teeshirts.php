@@ -5,8 +5,21 @@ $page = 'teeshirts';
 // Inclure la partie de haut de la page.
 include('parties-communes/entete.php');
 
-// Intégrer le fichier JSON contenant les produits
-$produits = json_decode(file_get_contents("data/teeshirts.json"));
+// Intégrer le fichier JSON contenant le catalogue
+$catalogue = json_decode(file_get_contents("data/teeshirts.json"));
+
+// Obtenir les thèmes et les produits de ce catalogue
+$themes = [];
+$produits = [];
+// "Boucler" à travers le catalogue pour remplir ces deux tableaux
+// print_r($catalogue);
+foreach ($catalogue as $codeTheme => $detailTheme) {
+	// echo "<p>";
+	// echo $codeTheme;
+	// echo "<p>";
+	// print_r($detailTheme);
+	// echo "<p>";
+}
 
 // Formatteur des montants d'argent
 $formatteurMontants = new NumberFormatter($langue, NumberFormatter::CURRENCY);

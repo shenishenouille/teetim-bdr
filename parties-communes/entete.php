@@ -1,46 +1,47 @@
 <?php
-	/*****************************************
+
+/*****************************************
 		Tableau des codes de langues disponibles
-	*****************************************/
-	$languesDispo = [];
-	$contenuI18n = scandir('i18n');
-	for($i=0; $i<count($contenuI18n); $i++) {
-		$fichier = $contenuI18n[$i];
-		if($fichier != '.' && $fichier != '..') {
-			$languesDispo[] = substr($fichier, 0, 2);
-		}
+ *****************************************/
+$languesDispo = [];
+$contenuI18n = scandir('i18n');
+for ($i = 0; $i < count($contenuI18n); $i++) {
+	$fichier = $contenuI18n[$i];
+	if ($fichier != '.' && $fichier != '..') {
+		$languesDispo[] = substr($fichier, 0, 2);
 	}
+}
 
-	/*****************************
+/*****************************
 		Déterminer la langue du site
-	*****************************/
-	// 1. Langue par défaut
-	$langue = 'fr';
-	
-	// 2. Langue mémorisée dans un témoin HTTP
-	if(isset($_COOKIE['choixLangue']) && in_array($_COOKIE['choixLangue'], $languesDispo)) {
-		$langue = $_COOKIE['choixLangue'];
-	}
-	
-	// 3. Langue spécifiée explicitement
-	if(isset($_GET['lan']) &&  in_array($_GET['lan'], $languesDispo)) {
-		$langue = $_GET['lan'];
-		setcookie('choixLangue', $langue, time()+30*24*3600);
-	}
+ *****************************/
+// 1. Langue par défaut
+$langue = 'fr';
 
-	/*********************
+// 2. Langue mémorisée dans un témoin HTTP
+if (isset($_COOKIE['choixLangue']) && in_array($_COOKIE['choixLangue'], $languesDispo)) {
+	$langue = $_COOKIE['choixLangue'];
+}
+
+// 3. Langue spécifiée explicitement
+if (isset($_GET['lan']) &&  in_array($_GET['lan'], $languesDispo)) {
+	$langue = $_GET['lan'];
+	setcookie('choixLangue', $langue, time() + 30 * 24 * 3600);
+}
+
+/*********************
 	Intégration des textes
-	*********************/
-	$textesJSON = file_get_contents("i18n/".$langue.".json");
-	$textes = json_decode($textesJSON);
-	// Variables raccourcis pour les parties communes
-	$_ent = $textes->entete;
-	$_pp = $textes->pp;
-	// Variable raccourci pour toutes les pages spécifiques
-	$_ = @$textes->$page;
-	// Déterminer la direction d'écriture
-	$directionEcriture = in_array($langue, ["ar", "he", "fa", "ur", "dv", "ps", "ku"])
-														? 'rtl' : 'ltr';
+ *********************/
+$textesJSON = file_get_contents("i18n/" . $langue . ".json");
+$textes = json_decode($textesJSON);
+// Variables raccourcis pour les parties communes
+$_ent = $textes->entete;
+$_pp = $textes->pp;
+// Variable raccourci pour toutes les pages spécifiques
+$_ = @$textes->$page;
+// Déterminer la direction d'écriture
+$directionEcriture = in_array($langue, ["ar", "he", "fa", "ur", "dv", "ps", "ku"])
+	? 'rtl' : 'ltr';
 ?>
 
 <!DOCTYPE html>
@@ -63,15 +64,14 @@
 	<div class="conteneur">
 		<header>
 			<nav class="barre-haut">
-				<?php foreach($languesDispo as $codeLangue): ?>
-				<a 
-					class="<?= ($langue==$codeLangue) ? 'actif' : '' ?>" 
-					href="?lan=<?= $codeLangue ?>"
-				>
-					<?= $codeLangue ?>
-				</a>
+				<?php foreach ($languesDispo as $codeLangue): ?>
+					<a
+						class="<?= ($langue == $codeLangue) ? 'actif' : '' ?>"
+						href="?lan=<?= $codeLangue ?>">
+						<?= $codeLangue ?>
+					</a>
 				<?php endforeach; ?>
-				
+
 			</nav>
 			<nav class="barre-logo">
 				<label for="cc-btn-responsive" class="material-icons burger">menu</label>
@@ -82,11 +82,11 @@
 			<input type="checkbox" id="cc-btn-responsive">
 			<nav class="principale">
 				<label for="cc-btn-responsive" class="menu-controle material-icons">close</label>
-				<a href="teeshirts.php" class="<?= $page=='teeshirts' ? 'actif' : '' ?>"><?= $_ent->menuTeeshirts; ?></a>
-				<a href="casquettes.php" class="<?= $page=='casquettes' ? 'actif' : '' ?>"><?= $_ent->menuCasquettes; ?></a>
-				<a href="hoodies.php" class="<?= $page=='hoodies' ? 'actif' : '' ?>"><?= $_ent->menuHoodies ?></a>
+				<a href="teeshirts.php" class="<?= $page == 'teeshirts' ? 'actif' : '' ?>"><?= $_ent->menuTeeshirts; ?></a>
+				<a href="casquettes.php" class="<?= $page == 'casquettes' ? 'actif' : '' ?>"><?= $_ent->menuCasquettes; ?></a>
+				<a href="hoodies.php" class="<?= $page == 'hoodies' ? 'actif' : '' ?>"><?= $_ent->menuHoodies ?></a>
 				<span class="separateur"></span>
-				<a href="aide.php" class="<?= $page=='aide' ? 'actif' : '' ?>"><?= $_ent->menuAide ?></a>
-				<a href="apropos.php" class="<?= $page=='apropos' ? 'actif' : '' ?>"><?= $_ent->menuNous ?></a>
+				<a href="aide.php" class="<?= $page == 'aide' ? 'actif' : '' ?>"><?= $_ent->menuAide ?></a>
+				<a href="apropos.php" class="<?= $page == 'apropos' ? 'actif' : '' ?>"><?= $_ent->menuNous ?></a>
 			</nav>
 		</header>
