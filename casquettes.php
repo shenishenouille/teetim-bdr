@@ -1,18 +1,14 @@
 <?php
-// Indiquer la page au code dans le fichier commun entete.inc.php
+// Indiquer la page
 $page = "casquettes";
-
-// Inclure la partie ENTETE du site
-include_once('commun/entete.inc.php');
-/** @var stdClass $_ */
-
+include("parties-communes/entete.php");
 ?>
-<main class="page-casquettes">
-    <article class="amorce">
-        <h1><?= $_->h1; ?></h1>
-    </article>
-    <article class="principal">
-        <?= $_->enConstruction; ?>
-    </article>
+<main class="page-produits page-casquettes">
+	<article class="amorce">
+		<h1><?= $_->titrePage ?></h1>
+	</article>
+	<article class="principal">
+		<?= $_->aVenir ?>
+	</article>
 </main>
-<?php include_once('commun/p2p.inc.php'); ?>
+<?php include("parties-communes/pied2page.php"); ?>
