@@ -111,11 +111,29 @@
 			}
 		]
 	},
-	"jv": {
+	"jeuxvideo": {
 		"theme": {
 			"fr": "Jeux vidéo",
 			"en": "Video Games"
 		},
 		"produits": []
+	},
+	"cinema": {
+		"theme": {
+			"fr": "Cinéma",
+			"en": "Movies"
+		},
+		"produits": [
+			{
+				"id": "ts0105",
+				"nom": {
+					"fr": "Il était une fois dans l'ouest",
+					"en": "Once Upon a Time in The West"
+				},
+				"dac": "2025-11-20",
+				"ventes": 10,
+				"prix": 25.6
+			}
+		]
 	}
 }

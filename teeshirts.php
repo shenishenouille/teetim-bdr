@@ -7,6 +7,7 @@ include('parties-communes/entete.php');
 
 // Intégrer le fichier JSON contenant le catalogue
 $catalogue = json_decode(file_get_contents("data/teeshirts.json"));
+// print_r($catalogue);
 
 // Obtenir les thèmes et les produits de ce catalogue
 $themes = [];
@@ -14,12 +15,15 @@ $produits = [];
 // "Boucler" à travers le catalogue pour remplir ces deux tableaux
 // print_r($catalogue);
 foreach ($catalogue as $codeTheme => $detailTheme) {
-	// echo "<p>";
-	// echo $codeTheme;
-	// echo "<p>";
-	// print_r($detailTheme);
-	// echo "<p>";
+	// Ramasser l'information sur les thèmes...
+	$themes[$codeTheme] = $detailTheme->theme->$langue;
+	// Ramasser l'information sur les produits...
+	// Il faut joindre tous les petits tableaux des produits dans chaque thème.
+	$produits = array_merge($produits, $detailTheme->produits);
 }
+
+// Trier les produits aléatoirement.
+shuffle($produits);
 
 // Formatteur des montants d'argent
 $formatteurMontants = new NumberFormatter($langue, NumberFormatter::CURRENCY);
@@ -33,11 +37,15 @@ $formatteurMontants = new NumberFormatter($langue, NumberFormatter::CURRENCY);
 				<label for="filtre">Filtrer par thème : </label>
 				<select name="filtre" id="filtre">
 					<option value="tous">Tous les produits</option>
-					<option value="animaux">Animaux</option>
-					<option value="nature">Nature</option>
-					<option value="jeux">Jeux vidéo</option>
-					<option value="inusite">Inusité</option>
-					<option value="sport">Sport</option>
+
+					<!-- Gabarit pour le choix d'un thème -->
+
+					<?php foreach ($themes as $codeTheme => $nomTheme) : ?>
+						<option value="<?= $codeTheme; ?>">
+							<?= $nomTheme; ?>
+						</option>
+					<?php endforeach; ?>
+
 				</select>
 			</div>
 			<div class="tri">
@@ -58,10 +66,14 @@ $formatteurMontants = new NumberFormatter($langue, NumberFormatter::CURRENCY);
 		<?php foreach ($produits as $prd) : ?>
 			<div class="produit">
 				<span class="image">
-					<img src="images/produits/teeshirts/<?= $prd->id; ?>.webp" alt="<?= $prd->nom; ?>">
+					<img
+						src="images/produits/teeshirts/<?= $prd->id; ?>.webp"
+						alt="<?= $prd->nom->$langue; ?>">
 				</span>
-				<span class="nom"><?= $prd->nom; ?></span>
-				<span class="prix"><?= $formatteurMontants->formatCurrency($prd->prix, 'CAD'); ?></span>
+				<span class="nom"><?= $prd->nom->$langue; ?></span>
+				<span class="prix">
+					<?= $formatteurMontants->formatCurrency($prd->prix, 'CAD'); ?>
+				</span>
 			</div>
 		<?php endforeach; ?>
 	</article>
