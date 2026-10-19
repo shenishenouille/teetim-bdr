@@ -1,16 +1,8 @@
 <?php
+// Inclure les fichiers de librairies requis
+include('lib/i18n.lib.php');
 
-/*****************************************
-		Tableau des codes de langues disponibles
- *****************************************/
-$languesDispo = [];
-$contenuI18n = scandir('i18n');
-for ($i = 0; $i < count($contenuI18n); $i++) {
-	$fichier = $contenuI18n[$i];
-	if ($fichier != '.' && $fichier != '..') {
-		$languesDispo[] = substr($fichier, 0, 2);
-	}
-}
+$languesDispo = obtenirLanguesDisponibles();
 
 /*****************************
 		Déterminer la langue du site
